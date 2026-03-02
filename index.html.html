@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Surpresa para o Leo 💖</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffb3c6, #ff4d88);
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.botao {
+    padding: 20px 40px;
+    font-size: 28px;
+    background: white;
+    color: #ff4d88;
+    border-radius: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao:hover {
+    transform: scale(1.1);
+}
+
+.mensagem {
+    display: none;
+    color: white;
+    font-size: 40px;
+    z-index: 2;
+}
+
+img {
+    width: 250px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+    display: none;
+    z-index: 2;
+}
+
+.coracao {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    animation: cair 5s linear infinite;
+}
+
+@keyframes cair {
+    0% { transform: translateY(-10vh); }
+    100% { transform: translateY(110vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div>
+    <button class="botao" onclick="mostrarMensagem()">Clique aqui 💖</button>
+
+    <div class="mensagem" id="mensagem">
+        Só pra você não esquecer que te amo 💖
+    </div>
+
+    <img src="leo.jpg" alt="Foto do Leo" id="foto">
+</div>
+
+<script>
+function mostrarMensagem() {
+    document.getElementById("mensagem").style.display = "block";
+    document.getElementById("foto").style.display = "block";
+    
+    // Começar a chuva de corações
+    setInterval(criarCoracao, 300);
+}
+
+function criarCoracao() {
+    const coracao = document.createElement("div");
+    coracao.classList.add("coracao");
+    coracao.innerHTML = "💖";
+    coracao.style.left = Math.random() * 100 + "vw";
+    coracao.style.fontSize = (Math.random() * 20 + 20) + "px";
+    coracao.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(coracao);
+
+    setTimeout(() => {
+        coracao.remove();
+    }, 5000);
+}
+</script>
+
+</body>
+</html>
