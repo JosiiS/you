@@ -2,30 +2,46 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Surpresa para o Leo 💖</title>
+<title>Surpresa para o Leo 🌌💙</title>
 
 <style>
 body {
     margin: 0;
     height: 100vh;
-    background: linear-gradient(135deg, #ffb3c6, #ff4d88);
     font-family: Arial;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     overflow: hidden;
+    background: radial-gradient(ellipse at bottom, #1e3c72 0%, #2a5298 100%);
+    position: relative;
+}
+
+/* estrelas pequenas */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
 }
 
 .botao {
     padding: 20px 40px;
     font-size: 28px;
     background: white;
-    color: #ff4d88;
+    color: #2a9df4;
     border-radius: 15px;
     text-decoration: none;
     cursor: pointer;
     transition: 0.3s;
+    z-index: 2;
 }
 
 .botao:hover {
@@ -50,7 +66,7 @@ img {
 
 .coracao {
     position: absolute;
-    color: white;
+    color: #00cfff; /* azul céu */
     font-size: 20px;
     animation: cair 5s linear infinite;
 }
@@ -65,16 +81,27 @@ img {
 <body>
 
 <div>
-    <button class="botao" onclick="mostrarMensagem()">Clique aqui 💖</button>
+    <button class="botao" onclick="mostrarMensagem()">Clique aqui 🌌💙</button>
 
     <div class="mensagem" id="mensagem">
-        Só pra você não esquecer que te amo 💖
+        Só pra você não esquecer que te amo 💙
     </div>
 
-    <img src="leo.jpg" alt="Foto do Leo" id="foto">
+    <img src="foto.jpg" alt="Foto" id="foto">
 </div>
 
 <script>
+// gerar estrelas aleatórias
+for(let i=0; i<100; i++){
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.width = Math.random()*3 + 1 + "px";
+    star.style.height = star.style.width;
+    star.style.top = Math.random()*100 + "vh";
+    star.style.left = Math.random()*100 + "vw";
+    document.body.appendChild(star);
+}
+
 function mostrarMensagem() {
     document.getElementById("mensagem").style.display = "block";
     document.getElementById("foto").style.display = "block";
@@ -86,7 +113,7 @@ function mostrarMensagem() {
 function criarCoracao() {
     const coracao = document.createElement("div");
     coracao.classList.add("coracao");
-    coracao.innerHTML = "💖";
+    coracao.innerHTML = "💙"; // corações azul céu
     coracao.style.left = Math.random() * 100 + "vw";
     coracao.style.fontSize = (Math.random() * 20 + 20) + "px";
     coracao.style.animationDuration = (Math.random() * 3 + 2) + "s";
